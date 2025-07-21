@@ -1,19 +1,19 @@
-# Office Malware Detection System
+# Office 恶意宏检测系统
 
-A machine learning-based system for detecting malicious macros in Microsoft Office documents.
+基于机器学习的 Microsoft Office 文档恶意宏检测系统。
 
-## Features
+## 功能特性
 
-- **Multiple ML Models**: Uses ensemble of RandomForest, MLP, KNN, and SVM classifiers
-- **VBA Feature Extraction**: Extracts comprehensive features from VBA macro code
-- **Ensemble Voting**: Combines predictions from multiple models for improved accuracy
-- **Batch Processing**: Process entire folders of Office documents
-- **Command Line Interface**: Easy-to-use CLI for batch analysis
+- **多模型集成**: 使用随机森林、多层感知机、K近邻和支持向量机的集成分类器
+- **VBA特征提取**: 从VBA宏代码中提取全面的特征
+- **集成投票**: 结合多个模型的预测结果以提高准确性
+- **批量处理**: 处理整个文件夹的Office文档
+- **命令行界面**: 易于使用的CLI批量分析工具
 
-## Requirements
+## 系统要求
 
 - Python 3.7+
-- Required packages:
+- 依赖包:
   ```
   numpy
   pandas
@@ -21,100 +21,100 @@ A machine learning-based system for detecting malicious macros in Microsoft Offi
   pickle
   ```
 
-## Installation
+## 安装
 
-1. Clone the repository:
+1. 克隆仓库:
    ```bash
    git clone https://github.com/Wzl731/office_detect.git
    cd office_detect
    ```
 
-2. Install dependencies:
+2. 安装依赖:
    ```bash
    pip install numpy pandas scikit-learn
    ```
 
-## Usage
+## 使用方法
 
-### Basic Usage
+### 基本用法
 
-Analyze a folder of Office documents:
+分析Office文档文件夹:
 
 ```bash
 python detector.py --folder /path/to/documents
 ```
 
-### Command Line Options
+### 命令行选项
 
-- `--folder, -f`: Path to folder containing Office documents to analyze
-- `--models-dir, -m`: Path to trained models directory (default: models_0711)
-- `--no-save`: Disable saving of classified files
-- `--save-type`: Choose what to save: `all`, `malicious`, or `benign` (default: all)
+- `--folder, -f`: 包含要分析的Office文档的文件夹路径
+- `--models-dir, -m`: 训练模型目录路径 (默认: models_0711)
+- `--no-save`: 禁用分类文件保存功能
+- `--save-type`: 选择保存类型: `all`(全部), `malicious`(恶意), 或 `benign`(良性) (默认: all)
 
-### Examples
+### 使用示例
 
 ```bash
-# Analyze documents in 'samples' folder
+# 分析 'samples' 文件夹中的文档
 python detector.py --folder samples
 
-# Use custom models directory
+# 使用自定义模型目录
 python detector.py --folder samples --models-dir my_models
 
-# Only save malicious files
+# 仅保存恶意文件
 python detector.py --folder samples --save-type malicious
 
-# Analyze without saving any files
+# 分析但不保存任何文件
 python detector.py --folder samples --no-save
 ```
 
-## How It Works
+## 工作原理
 
-1. **Feature Extraction**: The system extracts various features from VBA macro code including:
-   - API calls and function usage
-   - String patterns and keywords
-   - Code structure metrics
-   - Suspicious behavior indicators
+1. **特征提取**: 系统从VBA宏代码中提取各种特征，包括:
+   - API调用和函数使用情况
+   - 字符串模式和关键词
+   - 代码结构指标
+   - 可疑行为指示器
 
-2. **Model Ensemble**: Four different machine learning models analyze the features:
-   - Random Forest
-   - Multi-Layer Perceptron (MLP)
-   - K-Nearest Neighbors (KNN)
-   - Support Vector Machine (SVM)
+2. **模型集成**: 四种不同的机器学习模型分析特征:
+   - 随机森林 (Random Forest)
+   - 多层感知机 (MLP)
+   - K近邻算法 (KNN)
+   - 支持向量机 (SVM)
 
-3. **Voting Decision**: The final classification is based on majority voting from all models
+3. **投票决策**: 最终分类基于所有模型的多数投票
 
-## Output
+## 输出结果
 
-The system provides:
-- Individual model predictions with confidence scores
-- Ensemble voting results
-- Classification statistics
-- Automatic file organization (malicious files saved to `data/good2bad2`, benign files to `data/bad2good2`)
+系统提供:
+- 各个模型的预测结果和置信度分数
+- 集成投票结果
+- 分类统计信息
+- 自动文件组织 (恶意文件保存到 `data/good2bad2`, 良性文件保存到 `data/bad2good2`)
 
-## Model Training
+## 模型训练
 
-The system uses pre-trained models located in the `models_0711` directory. Models were trained on a comprehensive dataset of benign and malicious Office documents.
+系统使用位于 `models_0711` 目录中的预训练模型。这些模型在包含良性和恶意Office文档的综合数据集上进行了训练。
 
-## File Structure
+## 文件结构
 
 ```
 office_detect/
-├── detector.py              # Main detection script
-├── original_feature_extractor.py  # Feature extraction module
-├── feature222.py           # VBA feature extractor
-├── models_0711/            # Pre-trained models directory
-├── data/                   # Output directory for classified files
-└── README.md              # This file
+├── detector.py              # 主检测脚本
+├── original_feature_extractor.py  # 特征提取模块
+├── feature222.py           # VBA特征提取器
+├── models_0711/            # 预训练模型目录
+├── data/                   # 分类文件输出目录
+└── README.md              # 本文件
 ```
 
-## Contributing
+## 贡献
 
-Contributions are welcome! Please feel free to submit issues and enhancement requests.
+欢迎贡献代码！请随时提交问题和功能改进请求。
 
-## License
+## 许可证
 
-This project is for educational and research purposes.
+本项目仅用于教育和研究目的。
 
-## Disclaimer
+## 免责声明
 
-This tool is designed for legitimate security research and malware analysis purposes. Users are responsible for ensuring compliance with applicable laws and regulations.
+此工具专为合法的安全研究和恶意软件分析目的而设计。用户有责任确保遵守适用的法律法规。
