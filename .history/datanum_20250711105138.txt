@@ -1,0 +1,9 @@
+(MAGIC) wenzhuolindeMacBook-Air:macro_fc-main wenzhuolin$ echo "📁 所有文件夹详细信息:"
+📁 所有文件夹详细信息:
+(MAGIC) wenzhuolindeMacBook-Air:macro_fc-main wenzhuolin$ echo "bad文件夹: $(find data/bad -type f | wc -l | tr -d ' ') 个文件"
+bad文件夹: 9468 个文件
+(MAGIC) wenzhuolindeMacBook-Air:macro_fc-main wenzhuolin$ echo "good文件夹: $(find data/good -type f | wc -l | tr -d ' ') 个文件"
+good文件夹: 13979 个文件
+(MAGIC) wenzhuolindeMacBook-Air:macro_fc-main wenzhuolin$ echo "good2bad文件夹: $(find data/good2bad -type f | wc -l | tr -d ' ') 个文件"
+good2bad文件夹: 69 个文件
+(MAGIC) wenzhuolindeMacBook-Air:macro_fc-main wenzhuolin$ echo "bad2good文件夹: $(find data/bad2good -type f | wc -l | tr -d ' ') 个文件"
